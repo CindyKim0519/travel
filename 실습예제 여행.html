@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>여행</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <style>
+        .b_box *{
+            margin:0px;
+            padding:0px;
+        }
+        .b_box{
+            width:430px;
+            border:3px solid #000;
+            text-align:right;
+            position:relative;
+        }
+        .b_box>h3{
+            display:none;
+        }
+        .b_box>img{width:100%;
+            height:400px;
+            display:block;
+            
+        }
+        span.fas{
+            font-size:30px;
+            padding:7px 10px;
+            border: 1px solid #333;
+            cursor:pointer;
+        }
+        #page{
+            background:#333;
+            color:#fff;
+            padding:3px 8px;
+            position:absolute;
+            bottom:0px;right:0px;
+        }
+        #left_btn,#right_btn{
+            position:absolute;
+            background:#333;
+            color:white;
+        }
+        #left_btn{
+            left:0px; top:45%;
+        }
+        #right_btn{
+            right:0px; top:45%;
+        }
+    </style>
+</head>
+<body>
+    <article class="b_box">
+        <h3>여행</h3>
+        <p>
+            <span id="page"></span>
+            <span class="fas fa-angle-left" id="left_btn"></span>
+            <span class="fas fa-angle-right" id="right_btn"></span>
+        </p>
+        <img src="./tour1.jpg" alt="여행사진" id="tour">
+    </article>
+
+    <script>
+        let n = 1;
+        const l_btn = document.getElementById('left_btn');
+        const r_btn = document.getElementById('right_btn');
+
+        let page_n = document.getElementById('page');
+
+        page_n.innerHTML = n +'/4';
+
+        l_btn.addEventListener('click', function(){
+            if(n == 1){
+                n = 4;
+            }else{
+                n--;
+            }
+            page_n.innerHTML = n + '/4';
+            document.getElementById('tour').src='./tour'+n+'.jpg';
+        });
+
+        r_btn.addEventListener('click', function(){
+            if(n == 4){
+                n = 1;
+            }else{
+                n++;
+            }
+            page_n.innerHTML = n + '/4';
+            document.getElementById('tour').src='./tour'+n+'.jpg';
+        });
+    </script>
+</body>
+</html>
